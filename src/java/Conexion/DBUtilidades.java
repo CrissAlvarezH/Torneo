@@ -22,6 +22,21 @@ public class DBUtilidades {
         sentenciaPreparada = null;
     }
     
+    public boolean validarUsuario(int id_usuario, String pass)
+            throws SQLException {
+        String sql = "SELECT * FROM usuario WHERE id_usuario=? "
+                + "AND pass_usuario=?;";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        sentenciaPreparada.setInt(1, id_usuario);
+        sentenciaPreparada.setString(2, pass);
+        
+        sentenciaPreparada.executeQuery();
+        ResultSet resultado = sentenciaPreparada.getResultSet();
+        
+        return resultado.next();// si hay por lo menos un resultado
+    }
+    
     // Retorna toda la informacion de los clubes del municipio pasado por parametros
     public ResultSet clubesDeUnMunicipio(int id_municipio) throws SQLException {
         String sql = "SELECT * FROM clubes WHERE id_municipio_club=?;";
@@ -30,7 +45,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_municipio);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -44,7 +58,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_club);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -61,7 +74,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_disciplina);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -76,7 +88,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_equipo);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -91,7 +102,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_club);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -106,7 +116,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_municipio);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -121,7 +130,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_encuentro);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -138,7 +146,6 @@ public class DBUtilidades {
         sentenciaPreparada.setInt(1, id_encuentro);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }

@@ -42,7 +42,6 @@ public class BDCrud {
         sentenciaPreparada.setString(6, usuario.getPass());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarClub(Club club) throws SQLException{
@@ -55,7 +54,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(4, club.getId_municipio());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarCategoria(Categoria categoria) throws SQLException{
@@ -68,7 +66,6 @@ public class BDCrud {
         sentenciaPreparada.setString(4, categoria.getGenero());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarDisciplina(Disciplina disciplina) throws SQLException{
@@ -80,7 +77,6 @@ public class BDCrud {
         sentenciaPreparada.setString(3, disciplina.getDescripcion());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarEncuentro(Encuentro encuentro) throws SQLException{
@@ -93,7 +89,6 @@ public class BDCrud {
         sentenciaPreparada.setString(4, encuentro.getHora());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarEquipo(Equipo equipo) throws SQLException{
@@ -105,7 +100,6 @@ public class BDCrud {
         sentenciaPreparada.setString(3, equipo.getFecha_fundacion());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarMunicipio(Municipio municipio) throws SQLException{
@@ -117,7 +111,6 @@ public class BDCrud {
         sentenciaPreparada.setString(3, municipio.getDepartamento());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarParticipacion(Participacion participacion) 
@@ -132,7 +125,6 @@ public class BDCrud {
         sentenciaPreparada.setString(5, participacion.getHora());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarParticipante(Participante participante) 
@@ -149,7 +141,6 @@ public class BDCrud {
         sentenciaPreparada.setFloat(7, participante.getPeso());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarPenalizacion(Penalizacion penalizacion) 
@@ -162,7 +153,6 @@ public class BDCrud {
         sentenciaPreparada.setString(3, penalizacion.getDescripcion());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void insertarTorneo(Torneo torneo) throws SQLException{
@@ -178,7 +168,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(7, torneo.getId_categoria());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Como las entidades hijas no tienen campos propios insertamos directamente
@@ -193,7 +182,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
        // tambien en la subhija de colectivo: con oposicion 
         String sql = "INSERT INTO torneo_colectivo_con_oposicion VALUES (?);";
@@ -202,7 +190,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
         // luego en la tabla padre
         insertarTorneo(torneo);
@@ -218,7 +205,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
        // tambien en la subhija de colectivo: sin oposicion 
         String sql = "INSERT INTO torneo_colectivo_sin_oposicion VALUES (?);";
@@ -227,7 +213,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
         // luego en la tabla padre
         insertarTorneo(torneo);
@@ -243,7 +228,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
        // tambien en la subhija de indidual: con enfrentamiento 
         String sql = "INSERT INTO torneo_individual_con_enfrentamiento VALUES (?);";
@@ -252,7 +236,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
         // luego en la tabla padre
         insertarTorneo(torneo);
@@ -268,7 +251,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
        // tambien en la subhija de indidual: sin enfrentamiento 
         String sql = "INSERT INTO torneo_individual_sin_enfrentamiento VALUES (?);";
@@ -277,7 +259,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
         // luego en la tabla padre
         insertarTorneo(torneo);
@@ -310,7 +291,6 @@ public class BDCrud {
         sentenciaPreparada.setString(4, posicion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Insertamos el resultado de un encuentro entre participantes
@@ -324,7 +304,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, puntos);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Incribimos un participante en una disciplina
@@ -338,7 +317,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_disciplina);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Relacionamos un participante con una categoria
@@ -352,7 +330,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_categoria);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     /**
@@ -374,7 +351,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, valoracion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // cada participante esta 'inscrito' en un club
@@ -388,7 +364,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_club);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // relacionamos participante y penalizacion
@@ -402,7 +377,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_penalizacion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Inscribimos una disciplina en un club
@@ -416,7 +390,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_club);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Las disciplinas que hay en un municipio
@@ -430,7 +403,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_municipio);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     /**
@@ -451,7 +423,6 @@ public class BDCrud {
         sentenciaPreparada.setString(3, cargo);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
         
     }
     
@@ -473,7 +444,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, puntos);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     /**
@@ -494,7 +464,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, valoracion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // Relacion entre equipo y disciplina
@@ -508,7 +477,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_disciplina);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // relacionamos a equipo con torneo_colectivo
@@ -522,7 +490,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_torneo_colectivo);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // relacion entre equipo y penalizacion (solo estos dos)
@@ -536,7 +503,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_penalizacion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     // relacionamos equipo con club (los clubs forman los equipos)
@@ -548,7 +514,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(2, id_club);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     
@@ -565,7 +530,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_usuario);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarEquipo(int id_equipo) throws SQLException{
@@ -575,7 +539,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_equipo);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
      
     public void eliminarMunicipio(int id_municipio) throws SQLException{
@@ -585,7 +548,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_municipio);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarDisciplina(int id_disciplina) throws SQLException {
@@ -595,7 +557,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_disciplina);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarCategoria(int id_categoria) throws SQLException {
@@ -605,7 +566,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_categoria);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarClub(int id_club) throws SQLException {
@@ -615,7 +575,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_club);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarEncuentro(int id_encuentro) throws SQLException {
@@ -625,7 +584,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_encuentro);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarParticipacion(int id_participacion) throws SQLException {
@@ -635,7 +593,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_participacion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarParticipante(int id_participante) throws SQLException {
@@ -645,7 +602,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_participante);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarPenalizacion(int id_penalizacion) throws SQLException {
@@ -655,7 +611,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_penalizacion);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void eliminarTorneo(int id_torneo) throws SQLException {
@@ -665,7 +620,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_torneo);
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     /************************************************************************/
@@ -687,7 +641,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(6, usuario.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarCategoria(Categoria categoria) throws SQLException {
@@ -702,7 +655,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(4, categoria.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarClub(Club club) throws SQLException {
@@ -715,7 +667,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, club.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarDisciplina(Disciplina disciplina) throws SQLException {
@@ -729,7 +680,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, disciplina.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarEncuentro(Encuentro encuentro) throws SQLException {
@@ -744,7 +694,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(4, encuentro.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarEquipo(Equipo equipo) throws SQLException {
@@ -757,7 +706,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, equipo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarMunicipio(Municipio municipio) throws SQLException {
@@ -771,7 +719,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, municipio.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarParticipacion(Participacion participacion)
@@ -790,7 +737,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(5, participacion.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarParticipante(Participante participante)
@@ -812,7 +758,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(7, participante.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarPenalizacion(Penalizacion penalizacion)
@@ -827,7 +772,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(3, penalizacion.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     public void modificarTorneo(Torneo torneo) throws SQLException {
@@ -846,7 +790,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(7, torneo.getId());
         
         sentenciaPreparada.executeUpdate();
-        sentenciaPreparada.close();
     }
     
     /************************************************************************/
@@ -860,7 +803,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_usuario);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -872,7 +814,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_club);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -884,7 +825,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_categoria);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -896,7 +836,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_disciplina);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -908,7 +847,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_encuentro);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -920,7 +858,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_equipo);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -932,7 +869,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_municipio);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -944,7 +880,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_participacion);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -956,7 +891,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_participante);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -968,7 +902,6 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_penalizacion);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
@@ -980,10 +913,13 @@ public class BDCrud {
         sentenciaPreparada.setInt(1, id_torneo);
         
         ResultSet resultado = sentenciaPreparada.executeQuery();
-        sentenciaPreparada.close();
         
         return resultado;
     }
     
     /************************************************************************/
+    
+    public void cerrarSentencia() throws SQLException{
+        sentenciaPreparada.close();
+    }
 }
