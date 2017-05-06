@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
-        response.sendRedirect("ingresar");
+    if ((session.getAttribute("idusuario") != null)) {
+        response.sendRedirect("");
     }
 %>
 <!DOCTYPE html>
