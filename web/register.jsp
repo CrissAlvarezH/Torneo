@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if ((session.getAttribute("idusuario") != null)) {
-        response.sendRedirect("");
+        response.sendRedirect("index.jsp");
     }
 %>
 <!DOCTYPE html>
