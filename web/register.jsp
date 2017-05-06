@@ -1,3 +1,9 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
+        response.sendRedirect("ingresar");
+    }
+%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -13,14 +19,14 @@
             <h3 id="error" class="form__error"></h3>
 
             <div class="contenedor-inputs">
-                <input id="id" type="email" name="id" placeholder="N° de Idenficacion" class="input-100" required>
+                <input id="id" type="email" name="id" placeholder="NÂ° de Idenficacion" class="input-100" required>
                 <input id="nombre" type="text" name="nombre" placeholder="Nombre" class="input-48" required>
                 <input id="apellidos" type="text" name="apellidos" placeholder="Apellidos" class="input-48" required>
                 <input id="sexo" type="text" name="sexo" placeholder="Sexo. ej: Femenino"  class="input-48" required onkeyup="validarSexo()">
                 <input id="password" type="password" name="clave" placeholder="Contraseña" class="input-48" required min="6">
                 <input type="submit" Value="Registrar" class="btn-enviar">
 
-                <p class="form__link">¿Ya tienes cuenta? <a href="ingresar">Ingresa aquí</a></p>
+                <p class="form__link">¿Ya tienes cuenta? <a href="ingresar">Ingresa aquí­</a></p>
             </div>
         </form>
         <script src="js/registro.js"></script>
