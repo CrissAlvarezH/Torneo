@@ -6,7 +6,7 @@ body{
     background: #DEDEDE;
     margin: 0;
     font-family: sans-serif;
-    background-image: url(imagenes/fondo_registro.jpg);
+    background-image: url(../img/fondo_registro.jpg);
 }
 
 h1{
@@ -32,6 +32,11 @@ h1{
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     border-bottom: 5px solid #F8B711;
+}
+
+.form__error{
+    text-align: center;
+    font-weight: 100;
 }
 
 .contenedor-inputs{

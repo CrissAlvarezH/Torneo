@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!DOCTYPE urlrewrite
+        PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite3.0.dtd">
+
+    <urlrewrite>
+        
+        <rule>
+           <from>^/registro$</from>
+           <to>/registro_usuario.html</to>
+        </rule>
+        
+        <rule>
+           <from>^/ingresar$</from>
+           <to>/login.jsp</to>
+        </rule>
+        
+        <rule>
+            <from>^/salir$</from>
+            <to>/logout.jsp</to>
+        </rule>
+        
+    </urlrewrite>
