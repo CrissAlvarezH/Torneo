@@ -8,7 +8,7 @@
         
         <rule>
            <from>^/registro$</from>
-           <to>/registro_usuario.html</to>
+           <to>/register.jsp</to>
         </rule>
         
         <rule>
