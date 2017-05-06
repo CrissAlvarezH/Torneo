@@ -16,7 +16,7 @@
 
         if (validarUsuario) {
             session.setAttribute("idusuario", id);
-            response.sendRedirect("");
+            response.sendRedirect("index.jsp");
         } else {
             error = "Usuario o contraseña incorrecta";
         }
