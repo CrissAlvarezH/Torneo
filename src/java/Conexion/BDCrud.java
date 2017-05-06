@@ -25,6 +25,26 @@ public class BDCrud {
     
     /********* METODOS PARA INSERTAR REGISTROS EN LAS ENTIDADES *************/
     
+    /**
+     * Usuario es creado para manejar la plataforma dependiendo del rol
+     * @param usuario
+     * @throws SQLException 
+     */
+    public void insertarUsuario(Usuario usuario) throws SQLException {
+        String sql = "INSERT INTO usuario VALUES (?, ?, ?, ?, ?, ?);";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        sentenciaPreparada.setInt(1, usuario.getId());
+        sentenciaPreparada.setString(2, usuario.getNombres());
+        sentenciaPreparada.setString(3, usuario.getApellidos());
+        sentenciaPreparada.setString(4, usuario.getSexo());
+        sentenciaPreparada.setString(5, usuario.getRoll());
+        sentenciaPreparada.setString(6, usuario.getPass());
+        
+        sentenciaPreparada.executeUpdate();
+        sentenciaPreparada.close();
+    }
+    
     public void insertarClub(Club club) throws SQLException{
         String sql = "INSERT INTO club VALUES (?, ?, ?, ?);";
         
@@ -538,6 +558,15 @@ public class BDCrud {
     
     /********** METODOS PARA ELIMINAR REGISTROS EN LAS ENTIDADES ***********/
     
+    public void eliminarUsuario(int id_usuario) throws SQLException {
+        String sql = "DELECT FROM usuario WHERE id_usuario=?;";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        sentenciaPreparada.setInt(1, id_usuario);
+        
+        sentenciaPreparada.executeUpdate();
+        sentenciaPreparada.close();
+    }
     
     public void eliminarEquipo(int id_equipo) throws SQLException{
         String sql = "DELECT FROM equipo WHERE id_equipo=?;";
@@ -643,6 +672,23 @@ public class BDCrud {
     
     
     /********** METODOS PARA MODFICIAR REGISTROS EN LAS ENTIDADES ***********/
+    
+    public void modificarUuario(Usuario usuario) throws SQLException {
+        String sql = "UPDATE usuario SET nombres_usuario=?, apellidos_usuario=?,"
+                + " sexo_usuario=?, roll_usuario=?, pass_usuario=?"
+                + "WHERE id_usuario=?;";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        sentenciaPreparada.setString(1, usuario.getNombres());
+        sentenciaPreparada.setString(2, usuario.getApellidos());
+        sentenciaPreparada.setString(3, usuario.getSexo());
+        sentenciaPreparada.setString(4, usuario.getRoll());
+        sentenciaPreparada.setString(5, usuario.getPass());
+        sentenciaPreparada.setInt(6, usuario.getId());
+        
+        sentenciaPreparada.executeUpdate();
+        sentenciaPreparada.close();
+    }
     
     public void modificarCategoria(Categoria categoria) throws SQLException {
         String sql = "UPDATE categoria SET tipo_categoria=?, "
@@ -806,6 +852,18 @@ public class BDCrud {
     /************************************************************************/
     
     /********** METODOS PARA SELECCIONAR REGISTROS EN LAS ENTIDADES ***********/
+    
+    public ResultSet seleccionarUsuarioPorId(int id_usuario) throws SQLException{
+        String sql = "SELECT * FROM usuario WHERE id_usuario=?;";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        sentenciaPreparada.setInt(1, id_usuario);
+        
+        ResultSet resultado = sentenciaPreparada.executeQuery();
+        sentenciaPreparada.close();
+        
+        return resultado;
+    }
     
     public ResultSet seleccionarClubPorId(int id_club) throws SQLException{
         String sql = "SELECT * FROM club WHERE id_club=?;";
