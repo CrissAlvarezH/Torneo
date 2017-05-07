@@ -16,21 +16,7 @@
         <link rel="stylesheet" href="css/estilo.css">
     </head>
     <body>
-        <header>
-        <div class="contenedor">
-            <h1 class="flaticon-running"> Club</h1>
-            <input type="checkbox" id="menu-bar">
-            <label class="flaticon-menu-button-of-three-horizontal-lines" for="menu-bar"></label>
-            <!-- Opciones del menu -->
-            <nav class="menu">
-                <a href="">Inicio</a>
-                <a href="">Clubes</a>
-                <a href="">Torneos</a>
-                <a href="">Equipos</a>
-                <a href="salir">Salir</a>
-            </nav>
-        </div>   
-        </header>
+        <jsp:include page="header.jsp"/>
         
         <main>
             <section id="banner">

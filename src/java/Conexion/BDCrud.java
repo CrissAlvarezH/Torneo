@@ -796,6 +796,16 @@ public class BDCrud {
     
     /********** METODOS PARA SELECCIONAR REGISTROS EN LAS ENTIDADES ***********/
     
+    public ResultSet todosLosUsuarios() throws SQLException {
+        String sql = "SELECT * FROM usuario ;";
+        
+        sentenciaPreparada = conexion.prepareStatement(sql);
+        
+        ResultSet resultado = sentenciaPreparada.executeQuery();
+        
+        return resultado;
+    }
+    
     public ResultSet seleccionarUsuarioPorId(int id_usuario) throws SQLException{
         String sql = "SELECT * FROM usuario WHERE id_usuario=?;";
         

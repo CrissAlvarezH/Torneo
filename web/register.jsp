@@ -1,8 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
+<<<<<<< HEAD
     if ((session.getAttribute("idusuario") != null)) {
         response.sendRedirect("index.jsp");
     }
+=======
+    /*if ((session.getAttribute("idusuario") != null)) {
+        response.sendRedirect("");
+    }*/
+>>>>>>> mejoras
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +25,7 @@
             <h3 id="error" class="form__error"></h3>
 
             <div class="contenedor-inputs">
-                <input id="id" type="email" name="id" placeholder="NÂ° de Idenficacion" class="input-100" required>
+                <input id="id" type="email" name="id" placeholder="N° de Idenficacion" class="input-100" required>
                 <input id="nombre" type="text" name="nombre" placeholder="Nombre" class="input-48" required>
                 <input id="apellidos" type="text" name="apellidos" placeholder="Apellidos" class="input-48" required>
                 <input id="sexo" type="text" name="sexo" placeholder="Sexo. ej: Femenino"  class="input-48" required onkeyup="validarSexo()">
