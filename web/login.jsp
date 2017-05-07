@@ -32,7 +32,7 @@
     </head>
     <body>
         <h1>Formulario de registro</h1>
-        <form action="ingresar" method="post" class="form-registro">
+        <form action="" method="post" class="form-registro">
 
             <h2 class="form__titulo"><font face="arial">LOGIN</font></h2>
             
