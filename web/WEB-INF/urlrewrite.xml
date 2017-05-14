@@ -21,4 +21,8 @@
             <to>/logout.jsp</to>
         </rule>
         
+        <rule>
+            <from>^/clubes$</from>
+            <to>/clubes.jsp</to>
+        </rule>
     </urlrewrite>

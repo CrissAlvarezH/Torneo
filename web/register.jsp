@@ -1,14 +1,21 @@
+<%@page import="Controladores.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-<<<<<<< HEAD
+    String error = "";
+    //Si el usuario ya está autenticado redireccionar.
     if ((session.getAttribute("idusuario") != null)) {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect(""); //Redireccionar a la página principal
     }
-=======
-    /*if ((session.getAttribute("idusuario") != null)) {
-        response.sendRedirect("");
-    }*/
->>>>>>> mejoras
+    
+    //VERIFICAMOS QUE ES UN POST
+    if (request.getParameter("id") != null) {
+        if (UsuarioController.registrarUsuario(request)) {
+            response.sendRedirect("");
+        } else {
+            error = "Ha ocurrido un error al registrarse";
+        }
+        
+    }
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,14 +29,20 @@
         <form action="" method="post" class="form-registro">
 
             <h2 class="form__titulo"><font face="arial">REGISTRO</font></h2>
-            <h3 id="error" class="form__error"></h3>
+            <h3 id="error" class="form__error">
+                <%
+                if (error != null) {
+                    out.print(error);
+                }
+                %>
+            </h3>
 
             <div class="contenedor-inputs">
                 <input id="id" type="email" name="id" placeholder="N° de Idenficacion" class="input-100" required>
                 <input id="nombre" type="text" name="nombre" placeholder="Nombre" class="input-48" required>
                 <input id="apellidos" type="text" name="apellidos" placeholder="Apellidos" class="input-48" required>
                 <input id="sexo" type="text" name="sexo" placeholder="Sexo. ej: Femenino"  class="input-48" required onkeyup="validarSexo()">
-                <input id="password" type="password" name="clave" placeholder="Contraseña" class="input-48" required min="6">
+                <input id="password" type="password" name="password" placeholder="Contraseña" class="input-48" min="6" required>
                 <input type="submit" Value="Registrar" class="btn-enviar">
 
                 <p class="form__link">¿Ya tienes cuenta? <a href="ingresar">Ingresa aquí­</a></p>

@@ -15,36 +15,36 @@ import java.sql.SQLException;
  * @author CristianAlvarez
  */
 public class BDCrud {
-    private Connection conexion;
-    private PreparedStatement sentenciaPreparada;
-    
-    public BDCrud(){
-        conexion = Conector.getConexion();
-        sentenciaPreparada = null;
-    }
+    private static final Connection conexion = Conector.getConexion();
+    private static PreparedStatement sentenciaPreparada; 
     
     /********* METODOS PARA INSERTAR REGISTROS EN LAS ENTIDADES *************/
     
     /**
      * Usuario es creado para manejar la plataforma dependiendo del rol
      * @param usuario
+     * @return 
      * @throws SQLException 
      */
-    public void insertarUsuario(Usuario usuario) throws SQLException {
+    public static boolean insertarUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuario VALUES (?, ?, ?, ?, ?, ?);";
         
-        sentenciaPreparada = conexion.prepareStatement(sql);
-        sentenciaPreparada.setInt(1, usuario.getId());
-        sentenciaPreparada.setString(2, usuario.getNombres());
-        sentenciaPreparada.setString(3, usuario.getApellidos());
-        sentenciaPreparada.setString(4, usuario.getSexo());
-        sentenciaPreparada.setString(5, usuario.getRoll());
-        sentenciaPreparada.setString(6, usuario.getPass());
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, usuario.getId());
+            sentenciaPreparada.setString(2, usuario.getNombres());
+            sentenciaPreparada.setString(3, usuario.getApellidos());
+            sentenciaPreparada.setString(4, usuario.getSexo());
+            sentenciaPreparada.setString(5, usuario.getRol());
+            sentenciaPreparada.setString(6, usuario.getPass());
+        }
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
+        
+       
     }
     
-    public void insertarClub(Club club) throws SQLException{
+    public static boolean insertarClub(Club club) throws SQLException{
         String sql = "INSERT INTO club VALUES (?, ?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -53,10 +53,10 @@ public class BDCrud {
         sentenciaPreparada.setString(3, club.getDireccion());
         sentenciaPreparada.setInt(4, club.getId_municipio());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarCategoria(Categoria categoria) throws SQLException{
+    public static boolean insertarCategoria(Categoria categoria) throws SQLException{
         String sql = "INSERT INTO categoria VALUES (?, ?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -65,10 +65,10 @@ public class BDCrud {
         sentenciaPreparada.setString(3, categoria.getDescripcion());
         sentenciaPreparada.setString(4, categoria.getGenero());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarDisciplina(Disciplina disciplina) throws SQLException{
+    public static boolean insertarDisciplina(Disciplina disciplina) throws SQLException{
         String sql = "INSERT INTO disciplina VALUES (?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -76,10 +76,10 @@ public class BDCrud {
         sentenciaPreparada.setString(2, disciplina.getNombre());
         sentenciaPreparada.setString(3, disciplina.getDescripcion());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarEncuentro(Encuentro encuentro) throws SQLException{
+    public static boolean insertarEncuentro(Encuentro encuentro) throws SQLException{
         String sql = "INSERT INTO encuentro VALUES (?, ?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -88,10 +88,10 @@ public class BDCrud {
         sentenciaPreparada.setString(3, encuentro.getFecha());
         sentenciaPreparada.setString(4, encuentro.getHora());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarEquipo(Equipo equipo) throws SQLException{
+    public static boolean insertarEquipo(Equipo equipo) throws SQLException{
         String sql = "INSERT INTO equipo VALUES (?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -99,10 +99,10 @@ public class BDCrud {
         sentenciaPreparada.setString(2, equipo.getNombre());
         sentenciaPreparada.setString(3, equipo.getFecha_fundacion());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarMunicipio(Municipio municipio) throws SQLException{
+    public static boolean insertarMunicipio(Municipio municipio) throws SQLException{
         String sql = "INSERT INTO municipio VALUES (?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -110,10 +110,10 @@ public class BDCrud {
         sentenciaPreparada.setString(2, municipio.getNombre());
         sentenciaPreparada.setString(3, municipio.getDepartamento());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarParticipacion(Participacion participacion) 
+    public static boolean insertarParticipacion(Participacion participacion) 
             throws SQLException{
         String sql = "INSERT INTO participacion VALUES (?, ?, ?, ?, ?);";
         
@@ -124,10 +124,10 @@ public class BDCrud {
         sentenciaPreparada.setString(4, participacion.getFecha());
         sentenciaPreparada.setString(5, participacion.getHora());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarParticipante(Participante participante) 
+    public static boolean insertarParticipante(Participante participante) 
             throws SQLException{
         String sql = "INSERT INTO participante VALUES (?, ?, ?, ?, ?, ?, ?);";
         
@@ -140,10 +140,10 @@ public class BDCrud {
         sentenciaPreparada.setFloat(6, participante.getEstatura());
         sentenciaPreparada.setFloat(7, participante.getPeso());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarPenalizacion(Penalizacion penalizacion) 
+    public static boolean insertarPenalizacion(Penalizacion penalizacion) 
             throws SQLException{
         String sql = "INSERT INTO penalizacion VALUES (?, ?, ?);";
         
@@ -152,10 +152,10 @@ public class BDCrud {
         sentenciaPreparada.setString(2, penalizacion.getTipo());
         sentenciaPreparada.setString(3, penalizacion.getDescripcion());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
-    public void insertarTorneo(Torneo torneo) throws SQLException{
+    public static boolean insertarTorneo(Torneo torneo) throws SQLException{
         String sql = "INSERT INTO torneo VALUES (?, ?, ?, ?, ?, ?, ?);";
         
         sentenciaPreparada = conexion.prepareStatement(sql);
@@ -167,12 +167,12 @@ public class BDCrud {
         sentenciaPreparada.setInt(6, torneo.getId_disciplina());
         sentenciaPreparada.setInt(7, torneo.getId_categoria());
         
-        sentenciaPreparada.executeUpdate();
+        return sentenciaPreparada.executeUpdate() == 1;
     }
     
     // Como las entidades hijas no tienen campos propios insertamos directamente
     // en la tabla torneos
-    public void insertarTorneoColectivoConOposicion(Torneo torneo) 
+    public static boolean insertarTorneoColectivoConOposicion(Torneo torneo) 
             throws SQLException{
         
         // insertamos en la tabla hija torneo_colectivo
@@ -181,18 +181,22 @@ public class BDCrud {
         sentenciaPreparada = conexion.prepareStatement(sql_colectivo);
         sentenciaPreparada.setInt(1, torneo.getId());
         
-        sentenciaPreparada.executeUpdate();
+        if (sentenciaPreparada.executeUpdate() == 1) {
+            // tambien en la subhija de colectivo: con oposicion 
+            String sql = "INSERT INTO torneo_colectivo_con_oposicion VALUES (?);";
+
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, torneo.getId());
+
+            if (sentenciaPreparada.executeUpdate() == 1) { 
+                // luego en la tabla padre
+                return insertarTorneo(torneo);
+            }
+            
+        }
         
-       // tambien en la subhija de colectivo: con oposicion 
-        String sql = "INSERT INTO torneo_colectivo_con_oposicion VALUES (?);";
-        
-        sentenciaPreparada = conexion.prepareStatement(sql);
-        sentenciaPreparada.setInt(1, torneo.getId());
-        
-        sentenciaPreparada.executeUpdate();
-        
-        // luego en la tabla padre
-        insertarTorneo(torneo);
+        return false;
+       
     }
     
     public void insertarTorneoColectivoSinOposicion(Torneo torneo) 
@@ -636,7 +640,7 @@ public class BDCrud {
         sentenciaPreparada.setString(1, usuario.getNombres());
         sentenciaPreparada.setString(2, usuario.getApellidos());
         sentenciaPreparada.setString(3, usuario.getSexo());
-        sentenciaPreparada.setString(4, usuario.getRoll());
+        sentenciaPreparada.setString(4, usuario.getRol());
         sentenciaPreparada.setString(5, usuario.getPass());
         sentenciaPreparada.setInt(6, usuario.getId());
         
@@ -794,14 +798,19 @@ public class BDCrud {
     
     /************************************************************************/
     
-    /********** METODOS PARA SELECCIONAR REGISTROS EN LAS ENTIDADES ***********/
+    /********** METODOS PARA SELECCIONAR REGISTROS EN LAS ENTIDADES
+     * @return
+     * @throws java.sql.SQLException  ***********/
     
-    public ResultSet todosLosUsuarios() throws SQLException {
+    public static ResultSet todosLosUsuarios() throws SQLException {
         String sql = "SELECT * FROM usuario ;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
         
-        sentenciaPreparada = conexion.prepareStatement(sql);
+            resultado = sentenciaPreparada.executeQuery();
+        }
         
-        ResultSet resultado = sentenciaPreparada.executeQuery();
         
         return resultado;
     }
@@ -930,6 +939,8 @@ public class BDCrud {
     /************************************************************************/
     
     public void cerrarSentencia() throws SQLException{
-        sentenciaPreparada.close();
+        if (conexion != null) {
+            sentenciaPreparada.close();
+        }
     }
 }

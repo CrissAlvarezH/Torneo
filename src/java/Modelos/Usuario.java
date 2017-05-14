@@ -6,24 +6,24 @@ package Modelos;
  */
 public class Usuario {
     private int id;
-    private String nombres, apellidos, roll, sexo, pass;
+    private String nombres, apellidos, rol, sexo, pass;
 
     public Usuario(int id, String nombres, String apellidos, String sexo,
-            String roll, String pass) {
+            String rol, String pass) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.sexo = sexo;
         this.pass = pass;
-        this.roll = roll;
+        this.rol = rol;
     }
 
-    public String getRoll() {
-        return roll;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRoll(String roll) {
-        this.roll = roll;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public int getId() {
