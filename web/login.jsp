@@ -1,3 +1,4 @@
+<%@page import="Controladores.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Conexion.DBUtilidades"%>
 <%
@@ -9,14 +10,9 @@
     
     //VERIFICAMOS QUE ES UN POST
     if (request.getParameter("id_usuario") != null) {
-        String id = request.getParameter("id_usuario");
-        String pass = request.getParameter("pass_usuario");
-        
-        Boolean validarUsuario = new DBUtilidades().validarUsuario(Integer.parseInt(id), pass);
 
-        if (validarUsuario) {
-            session.setAttribute("idusuario", id);
-            response.sendRedirect("index.jsp");
+        if (UsuarioController.iniciarSesion(request)) {
+            response.sendRedirect("");
         } else {
             error = "Usuario o contraseña incorrecta";
         }

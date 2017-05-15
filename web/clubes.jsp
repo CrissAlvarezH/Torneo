@@ -1,8 +1,16 @@
+<%@page import="java.util.List"%>
+<%@page import="Modelos.Usuario"%>
+<%@page import="Controladores.UsuarioController"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
+        response.sendRedirect("ingresar");
+    }
+%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="Conexion.BDCrud"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="Conexion.DBUtilidades"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,58 +18,18 @@
         <link rel="stylesheet" href="font/flaticon.css">
         <!-- Vinculamos con el estilo -->
         <link rel="stylesheet" href="css/estilo.css">
+        <link rel="stylesheet" href="css/item_club.css">
         <title>Clubes</title>
         
-        <style>
-            
-            body {
-                margin-top: 50px;
-            }
-            
-            .item-group {
-                display: flex;
-                justify-content: center;
-                padding-top: 20px;
-            }
-
-            .item {
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.3s;
-                border-radius: 5px;
-                padding: 5px;
-                width: 40%;
-            }
-
-            .item-container {
-                padding-top: 2px;
-                display: inline-block;
-                width: 30%;
-                vertical-align: middle;
-            }
-
-            .item-img {
-                padding: 30px 10px;
-                border-radius: 5px 5px 0 0;
-                width: 70%;
-            }
-
-            .item:hover {
-                box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            }
-        </style>
     </head>
     
         <jsp:include page="header.jsp"/>
         
         <%
-            ResultSet result = null;
-            try{
-                result = new BDCrud().todosLosUsuarios();
-            }catch(SQLException e){}
-            
-            while(result.next()){
+                List<Usuario> usuarios = UsuarioController.obtenerUsuarios();
+                for (Usuario usuario: usuarios) {
         %>
-            <a href="clubes.jsp">
+            <a href="clubes">
                 <div class="item-group">
                     <div class="item">
                         <div class="item-container">
@@ -69,14 +37,14 @@
                                 class="item-img">
                         </div>
                         <div class="item-container">
-                            <h2><%= result.getString(2) %></h2>
-                            <p><%= result.getString(3)  %></p>
+                            <h2><%= usuario.getNombres() %></h2>
+                            <p><%= usuario.getApellidos()  %></p>
                         </div>
                     </div>
                 </div>
             </a>
         <%
-            }// fin del while
+            }// fin del foreach
         %>
     
 </html>
