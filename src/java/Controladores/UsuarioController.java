@@ -65,7 +65,9 @@ public class UsuarioController {
         
         try {
             result = insertarUsuario(user);
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+            System.out.println(e.getClass()+": "+e.getMessage());
+        }
         
         if (result) {
             request.getSession().setAttribute("idusuario", id);

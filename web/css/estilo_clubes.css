@@ -1,0 +1,128 @@
+body {
+	margin: 30px;
+        font-family: sans-serif;
+}
+
+.contenedor-principal {
+	display: flex;
+	padding: 20px;
+}
+
+
+.contenedor-izquierda {
+	height: 600px;/* una altura fija para qu eno haga scroll y este se pase al div hijo*/
+	overflow-y: scroll;/* activamos el scroll en y */
+	width: 60%;
+	padding: 0 20px;
+	/*background: #e45757;*/
+}
+
+.contenedor-busqueda {
+	display: flex;
+	padding: 10px;
+	/*background: #5c48be;*/
+	justify-content: center;
+}
+
+.busqueda {
+	/*background: #fff;*/
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid darkgray;
+	width: 80%;
+}
+
+.form-buscar-item {
+	margin-right: 10px;
+}
+
+
+.input-busqueda {
+	width: 73%;
+}
+
+.btn-buscar {
+	width: 20%;
+}
+
+input {
+	border-radius: 6px;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 1px solid darkgray;
+}
+
+select {
+	width: 100%;
+	border-radius: 6px;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	border: 1px solid darkgray;
+}
+
+.boton {
+	border-radius: 6px;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.contenedor-derecha {
+	width: 40%;
+	padding: 5px 20px;
+	/*background: #c4e457;*/
+}
+
+.contenedor-filtros {
+	/*background: #fff;*/
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+h4 {
+	margin: 0;
+}
+
+hr { /* linea horizontal */
+	background: black;
+	height: 2px;
+	margin-top: 2px;
+	margin-bottom: 20px;
+}
+
+label {
+	position: absolute;
+	left: 10px
+}
+
+.filtros{
+	position: relative;
+	/*background: #df40c6;*/
+	text-align: center;
+	width: 70%;
+}
+
+.contenedor-insertar-item {
+	display: flex;
+	justify-content: center;
+	/*background: #fff;*/
+	margin-top: 40px;
+}
+
+.insertar-item{
+	text-align: center;
+	/*background: #df40c6;*/
+	width: 70%;
+}
+
+.input-insertar {
+	box-sizing: border-box; /* para que el paddind no afecte el witdh*/
+	margin: 5px 0;
+	width: 100%;
+}
+
+.btn-insertar {
+}

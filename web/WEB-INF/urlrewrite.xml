@@ -25,4 +25,9 @@
             <from>^/clubes$</from>
             <to>/clubes.jsp</to>
         </rule>
+        
+        <rule>
+            <from>^/inicio$</from>
+            <to>/index.jsp</to>
+        </rule>
     </urlrewrite>

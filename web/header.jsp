@@ -7,7 +7,7 @@
     <label class="flaticon-menu-button-of-three-horizontal-lines" for="menu-bar"></label>
     <!-- Opciones del menu -->
     <nav class="menu">
-        <a href="">Inicio</a>
+        <a href="inicio">Inicio</a>
         <a href="clubes">Clubes</a>
         <a href="">Torneos</a>
         <a href="">Equipos</a>

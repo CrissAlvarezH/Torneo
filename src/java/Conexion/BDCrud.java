@@ -22,6 +22,8 @@ public class BDCrud {
     /**
      * ******* METODOS PARA INSERTAR REGISTROS EN LAS ENTIDADES ************
      */
+    
+    
     /**
      * Usuario es creado para manejar la plataforma dependiendo del rol
      *

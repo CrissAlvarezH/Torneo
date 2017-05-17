@@ -10,7 +10,7 @@ public class Participante {
     private String nombres, apellidos, sexo, direccion, telefono;
 
     public Participante(int id, String nombres, String apellidos, int edad,
-            String sexo, float estatura, float peso, String direccion, String telefono) {
+            String sexo, float estatura, float peso) {
         
         this.id = id;
         this.nombres = nombres;
@@ -19,8 +19,8 @@ public class Participante {
         this.sexo = sexo;
         this.estatura = estatura;
         this.peso = peso;
-        this.direccion = direccion;
-        this.telefono = telefono;
+        this.direccion = "";
+        this.telefono = "";
     }
 
     public float getPeso() {

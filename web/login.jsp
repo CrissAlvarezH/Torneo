@@ -5,14 +5,14 @@
     String error = "";
     //SI YA ESTÁ AUTENTICADO LO LLEVAMOS A LA PÁGINA PRINCIPAL
     if ((session.getAttribute("idusuario") != null)) {
-        response.sendRedirect("");
+        response.sendRedirect("inicio");
     }
     
     //VERIFICAMOS QUE ES UN POST
     if (request.getParameter("id_usuario") != null) {
 
         if (UsuarioController.iniciarSesion(request)) {
-            response.sendRedirect("");
+            response.sendRedirect("inicio");
         } else {
             error = "Usuario o contraseña incorrecta";
         }

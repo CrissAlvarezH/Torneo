@@ -35,6 +35,18 @@ public class DBUtilidades {
 
         return false;// si hay por lo menos un resultado
     }
+    
+    public static ResultSet todosLosClubes() throws SQLException {
+        String sql = "SELECT * FROM clubes;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
 
     // Retorna toda la informacion de los clubes del municipio pasado por parametros
     public static ResultSet clubesDeUnMunicipio(int id_municipio) throws SQLException {
@@ -58,6 +70,18 @@ public class DBUtilidades {
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, id_club);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    public static ResultSet todosLasDisciplinas() throws SQLException {
+        String sql = "SELECT * FROM disciplina;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
 
             resultado = sentenciaPreparada.executeQuery();
         }
@@ -108,6 +132,18 @@ public class DBUtilidades {
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, id_club);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    public static ResultSet todosLosEquipos() throws SQLException {
+        String sql = "SELECT * FROM equipo;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
 
             resultado = sentenciaPreparada.executeQuery();
         }
