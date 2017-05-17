@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *
  * @author CristianAlvarez
  */
-public class EsquiNautico{
+public class EsquiAlpino{
     // Vector que contiene el puntaje dependiendo de la posicion
     private static double [] puntos = {100, 80, 60, 50, 45, 40, 36, 32, 29, 26, 24, 
             22, 20, 18, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -40,7 +40,28 @@ public class EsquiNautico{
         }catch(SQLException e){
             System.out.println(e.getClass()+": "+e.getMessage());
         }
+        
+        
+       
     }
+    
+    
+    
+    /*
+        SELECT  id_participante, nombre_participante, valoracion, id_participacion_participante 
+        FROM participante, participante_participacion 
+        WHERE id_participante=id_participante_participacion 
+            AND id_participacion_participante=? OR id_participante_participacion=?
+                OR id_participacion_participante=? OR id_participacion_participante=?
+        GROUP BY id_participante ORDER BY valoracion;
+    
+        SELECT  id_participante, nombre_participante, valoracion, id_participacion_participante 
+        FROM participante, participante_participacion 
+        WHERE id_participante=id_participante_participacion 
+            AND id_participacion_participante=
+        GROUP BY id_participante ORDER BY valoracion;
+    */
+    
     
             
     
