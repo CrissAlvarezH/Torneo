@@ -36,6 +36,23 @@ public class DBUtilidades {
         return false;// si hay por lo menos un resultado
     }
     
+    public static boolean insertarValoracion(int id_participante,
+            int id_participacion, double valoracion) throws SQLException{
+        String sql = "UPDATE participante_participacion "
+                + "SET valoracion = ? "
+                + "WHERE id_participante_participacion=? "
+                + "AND id_participacion_participante=?;";
+        
+        if(conexion != null){
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setDouble(1, valoracion);
+            sentenciaPreparada.setInt(2, id_participante);
+            sentenciaPreparada.setInt(3, id_participacion);
+        }
+        
+        return sentenciaPreparada.executeUpdate() == 1;
+    }
+    
     public static ResultSet todosLosClubes() throws SQLException {
         String sql = "SELECT * FROM clubes;";
         ResultSet resultado = null;
@@ -116,6 +133,22 @@ public class DBUtilidades {
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, id_equipo);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    // retorna las participaciones de un torneo
+    public static ResultSet participacionesDeUnTorneo(int id_torneo) throws SQLException {
+        String sql = "SELECT * FROM participacion, participacion_torneo "
+                + "WHERE id_participacion=id_participacion_torneo "
+                + "AND id_torneo_participacion=?;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_torneo);
 
             resultado = sentenciaPreparada.executeQuery();
         }

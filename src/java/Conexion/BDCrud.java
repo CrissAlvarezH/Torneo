@@ -19,6 +19,12 @@ public class BDCrud {
     private static final Connection conexion = Conector.getConexion();
     private static PreparedStatement sentenciaPreparada;
 
+    
+    public static ResultSet ejecutarConsulta(String sql) throws SQLException{
+       
+        return sentenciaPreparada.executeQuery(sql);
+    }
+    
     /**
      * ******* METODOS PARA INSERTAR REGISTROS EN LAS ENTIDADES ************
      */
@@ -672,6 +678,40 @@ public class BDCrud {
 
         return false;
 
+    }
+    
+    // relacionamos encuentro con torneo
+    public static boolean encuentroTorneo(int id_encuentro, int id_torneo)
+                    throws SQLException{
+        String sql = "INSERT INTO encuentro_torneo VALUES(?, ?);";
+        
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_encuentro);
+            sentenciaPreparada.setInt(2, id_torneo);
+
+            return sentenciaPreparada.executeUpdate() == 1;
+
+        }
+
+        return false;
+    }
+    
+    // relacionamos particiapcion con torneo
+    public static boolean participacionTorneo(int id_participacion, int id_torneo)
+                    throws SQLException{
+        String sql = "INSERT INTO participacion_torneo VALUES(?, ?);";
+        
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_participacion);
+            sentenciaPreparada.setInt(2, id_torneo);
+
+            return sentenciaPreparada.executeUpdate() == 1;
+
+        }
+
+        return false;
     }
 
     /**
