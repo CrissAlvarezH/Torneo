@@ -80,7 +80,7 @@
 
         <div class="contenedor-insertar-item">
             <div class="insertar-item">
-                <form action="" method="post">
+                <form action="insertarItem.jsp" method="post">
                     <h4>Nuevo item</h4>
                     <hr>
                     <input type="text" class="input-insertar" name="codigo-item" placeholder="Codigo item">
