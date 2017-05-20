@@ -36,6 +36,34 @@ public class DBUtilidades {
         return false;// si hay por lo menos un resultado
     }
     
+    public static boolean actualizarPuntos(int id_torneo, int id_equipo, int puntos)
+            throws SQLException {
+        // pedimos los puntos que tiene hasta el momento, le sumamos lo que se ganó
+        // y le volvemos a insertar dichos puntos
+        String sqlPuntos = "SELECT puntos FROM clasificacion "
+                + "WHERE id_torneo_clasificacion=3 AND id_equipo_clasificacion=4;";
+        
+        ResultSet resultPuntos = BDCrud.ejecutarConsulta(sqlPuntos);
+        int puntosAnteriores = 0;
+        
+        if(resultPuntos.next())
+            puntosAnteriores = resultPuntos.getInt(1);
+        
+        puntosAnteriores += puntos;// sumamos los puntos ganados
+        
+        String sql = "UPDATE clasificacion SET puntos=? "
+                + "WHERE id_torneo_clasificacion=? AND id_equipo_clasificacion=?;";
+        
+        if(conexion != null){
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_torneo);
+            sentenciaPreparada.setInt(2, id_equipo);
+            sentenciaPreparada.setInt(3, puntosAnteriores);
+        }
+        
+        return sentenciaPreparada.executeUpdate() == 1;
+    }
+    
     public static boolean insertarValoracion(int id_participante,
             int id_participacion, double valoracion) throws SQLException{
         String sql = "UPDATE participante_participacion "
