@@ -70,6 +70,23 @@ public class BDCrud {
         return false;
     }
 
+    public static boolean insertarClubConDisciplina(Club club, int id_disciplina) 
+            throws SQLException {
+        String sql = "INSERT INTO disciplina_club VALUES (?, ?);";
+
+        if (conexion != null) {
+            if(insertarClub(club)){
+                sentenciaPreparada = conexion.prepareStatement(sql);
+                sentenciaPreparada.setInt(1, id_disciplina);
+                sentenciaPreparada.setInt(2, club.getId());
+                
+                return sentenciaPreparada.executeUpdate() == 1;
+            }
+        }
+
+        return false;
+    }
+    
     public static boolean insertarCategoria(Categoria categoria) throws SQLException {
         String sql = "INSERT INTO categoria VALUES (?, ?, ?, ?);";
 

@@ -36,6 +36,7 @@ public class DBUtilidades {
         return false;// si hay por lo menos un resultado
     }
     
+    
     public static boolean actualizarPuntos(int id_torneo, int id_equipo, int puntos)
             throws SQLException {
         // pedimos los puntos que tiene hasta el momento, le sumamos lo que se ganó
@@ -146,13 +147,37 @@ public class DBUtilidades {
     }
 
     // Retorna toda la informacion de los clubes del municipio y deporte pasados por parametros
-    public static ResultSet clubesDeUnMunicipioYDeporte(int id_municipio, int id_disciplina) throws SQLException {
-        String sql = "SELECT * FROM clubes, disciplina_club WHERE id_municipio_club=? AND id_disciplina_club=?;";
+    public static ResultSet clubesDeUnMunicipioYDeporte(int id_municipio, int id_disciplina)
+            throws SQLException {
+        String sql = "SELECT * FROM club, disciplina_club "
+                + "WHERE id_club=id_club_disciplina AND id_municipio_club=? "
+                + "AND id_disciplina_club=?;";
+        
         ResultSet resultado = null;
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, id_municipio);
             sentenciaPreparada.setInt(2, id_disciplina);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    // Retorna toda la informacion de los clubes del municipio y deporte pasados por parametros
+    public static ResultSet clubesDeUnMunicipioYDeporte(String nombre, int id_municipio, int id_disciplina)
+                    throws SQLException {
+        String sql = "SELECT * FROM club, disciplina_club "
+                + "WHERE id_club=id_club_disciplina AND id_municipio_club=? "
+                + "AND id_disciplina_club=? AND nombre_club LIKE '%"+nombre+"%';";
+        
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_municipio);
+            sentenciaPreparada.setInt(2, id_disciplina);
+            //sentenciaPreparada.setString(3, nombre);
 
             resultado = sentenciaPreparada.executeQuery();
         }

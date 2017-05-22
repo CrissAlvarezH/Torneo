@@ -7,12 +7,13 @@
         response.sendRedirect("ingresar");
     }
     
-    int id_municipio = Integer.parseInt(request.getParameter("id"));
+    int id_disciplina = Integer.parseInt(request.getParameter("d"));
+    int id_municipio = Integer.parseInt(request.getParameter("m"));
     
     if(request.getParameter("codigo") != null)
-        DisciplinaController.insertarDisciplinaDeMunicipio(request, id_municipio);
+        ClubController.insertarClubConDisciplina(request, id_municipio, id_disciplina);
     
-    List<Disciplina> disciplinas = DisciplinaController.buscarDisciplinaPorNombre(request, id_municipio);
+    List<Club> clubes = ClubController.buscarClubesConDisciplinaYMunicipio(request, id_disciplina, id_municipio);
 %>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@
 	<link rel="stylesheet" href="css/estilo_clubes.css">
 	<link rel="stylesheet" href="css/estilo-items.css">
         
-	<title>Diciplinas</title>
+	<title>Clubes</title>
 </head>
 <body>
     
@@ -41,7 +42,7 @@
         <div class="contenedor-busqueda">
             <div class="busqueda">
                 <form action="" method="post">
-                    <input type="text" placeholder="Buscar disciplina por nombre" class="form-buscar-item input-busqueda" name="nombre_buscar">
+                    <input type="text" placeholder="Buscar club por nombre" class="form-buscar-item input-busqueda" name="nombre_buscar">
                     <input type="submit" value="buscar" class="boton btn-buscar">
                 </form>
             </div>
@@ -49,18 +50,18 @@
         
         <div class="contenedor-lista">
             <% 
-                for(Disciplina disciplina : disciplinas){
+                for(Club club : clubes){
             %>
               
                 <div class="item-group">
-                    <div class="item" onclick="clickEnDisciplina(<%= disciplina.getId() %>, <%= id_municipio %>)">
+                    <div class="item" onclick="">
                         <div class="item-container">
-                            <img src="img/img_disciplina.png"
+                            <img src="img/img_clubes.png"
                                 class="item-img">
                         </div>
                         <div class="item-textos">
-                            <h2><%= disciplina.getNombre() %></h2>
-                            <p><br><%= disciplina.getDescripcion() %></p>
+                            <h2><%= club.getNombre() %></h2>
+                            <p><br><%= club.getDireccion() %></p>
                         </div>
                     </div>
                 </div>
@@ -77,11 +78,11 @@
         <div class="contenedor-insertar-item">
             <div class="insertar-item">
                 <form action="" method="post">
-                    <h4>Nueva Disciplina</h4>
+                    <h4>Nuevo Club</h4>
                     <hr>
-                    <input type="text" class="input-insertar" name="codigo" placeholder="Codigo de la disciplina">
-                    <input type="text" class="input-insertar" name="nombre" placeholder="Nombre de la disciplina">
-                    <input type="text" class="input-insertar" name="descripcion" placeholder="Descripcion de la disciplina">
+                    <input type="text" class="input-insertar" name="codigo" placeholder="Codigo del club">
+                    <input type="text" class="input-insertar" name="nombre" placeholder="Nombre del club">
+                    <input type="text" class="input-insertar" name="direccion" placeholder="Direccion del club">
 
                     <input type="submit" class="input-insertar" value="Insertar" class="boton btn-insertar">
                 </form>
