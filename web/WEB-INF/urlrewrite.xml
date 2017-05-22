@@ -22,8 +22,8 @@
         </rule>
         
         <rule>
-            <from>^/clubes$</from>
-            <to>/clubes.jsp</to>
+            <from>^/municipios$</from>
+            <to>/municipios.jsp</to>
         </rule>
         
         <rule>

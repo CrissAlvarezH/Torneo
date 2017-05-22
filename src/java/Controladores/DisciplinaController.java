@@ -77,4 +77,27 @@ public class DisciplinaController {
         
         return disciplinas;
     }
+    
+    public static List<Disciplina> obtenerDisciplinasDeMunicipio(int id_municipio){
+        List<Disciplina> disciplinas = new ArrayList();
+        
+        ResultSet result;
+        try{
+            result = DBUtilidades.disciplinasDeUnMunicipio(id_municipio);
+            
+            if(result != null){
+                while(result.next()){
+                    int id = result.getInt(1);
+                    String nombre = result.getString(2);
+                    String descripcion = result.getString(3);
+                    
+                    disciplinas.add(new Disciplina(id, nombre, descripcion));
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e.getClass()+": "+e.getMessage());
+        }
+        
+        return disciplinas;
+    }
 }

@@ -8,9 +8,8 @@
     <!-- Opciones del menu -->
     <nav class="menu">
         <a href="inicio">Inicio</a>
-        <a href="clubes">Clubes</a>
+        <a href="municipios">Municipios</a>
         <a href="">Torneos</a>
-        <a href="">Equipos</a>
         <a href="salir">Salir</a>
     </nav>
 </div>   

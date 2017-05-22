@@ -10,7 +10,7 @@ body {
 
 
 .contenedor-izquierda {
-	height: 600px;/* una altura fija para qu eno haga scroll y este se pase al div hijo*/
+	height: 700px;/* una altura fija para que no haga scroll y este se pase al div hijo*/
 	overflow-y: scroll;/* activamos el scroll en y */
 	width: 60%;
 	padding: 0 20px;

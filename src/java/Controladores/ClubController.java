@@ -83,4 +83,30 @@ public class ClubController {
         
         return clubes;
     }
+    
+    // Metodo sobrecargado para obtener list de clubes de un municipio
+    public static List<Club> obtenerClubes(int id_municipio, int id_deporte){
+        List<Club> clubes = new ArrayList();
+        
+        ResultSet result;
+        
+        try{
+            result = DBUtilidades.clubesDeUnMunicipioYDeporte(id_municipio, id_deporte);
+            
+            if(result != null){
+                while(result.next()){
+                    int id = result.getInt(1);
+                    String nombre = result.getString(2);
+                    String direccion = result.getString(3);
+                    int id_municipio_c = result.getInt(4);
+                    
+                    clubes.add(new Club(id, nombre, direccion, id_municipio_c));
+                }
+            }
+        }catch(SQLException e){
+            System.out.println(e.getClass()+": "+e.getMessage());
+        }
+        
+        return clubes;
+    }
 }

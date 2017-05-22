@@ -64,6 +64,7 @@ public class DBUtilidades {
         return sentenciaPreparada.executeUpdate() == 1;
     }
     
+    // metodo para insertar la valoracion de un participante en una valoracion
     public static boolean insertarValoracion(int id_participante,
             int id_participacion, double valoracion) throws SQLException{
         String sql = "UPDATE participante_participacion "
@@ -92,14 +93,53 @@ public class DBUtilidades {
 
         return resultado;
     }
+    
+    public static ResultSet todosLosMunicipios() throws SQLException {
+        String sql = "SELECT * FROM municipio;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
 
-    // Retorna toda la informacion de los clubes del municipio pasado por parametros
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    public static ResultSet municipioPorNombre(String nombre) throws SQLException {
+        String sql = "SELECT * FROM municipio WHERE nombre_municipio LIKE '%"+nombre+"%';";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    // Retorna toda la informacion de los clubes del municipio y deporte pasados por parametros
     public static ResultSet clubesDeUnMunicipio(int id_municipio) throws SQLException {
         String sql = "SELECT * FROM clubes WHERE id_municipio_club=?;";
         ResultSet resultado = null;
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, id_municipio);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+
+    // Retorna toda la informacion de los clubes del municipio y deporte pasados por parametros
+    public static ResultSet clubesDeUnMunicipioYDeporte(int id_municipio, int id_disciplina) throws SQLException {
+        String sql = "SELECT * FROM clubes, disciplina_club WHERE id_municipio_club=? AND id_disciplina_club=?;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_municipio);
+            sentenciaPreparada.setInt(2, id_disciplina);
 
             resultado = sentenciaPreparada.executeQuery();
         }
@@ -121,6 +161,7 @@ public class DBUtilidades {
 
         return resultado;
     }
+    
     
     public static ResultSet todosLasDisciplinas() throws SQLException {
         String sql = "SELECT * FROM disciplina;";

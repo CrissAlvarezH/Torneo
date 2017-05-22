@@ -1191,8 +1191,8 @@ public class BDCrud {
 
         return resultado;
     }
-
-    public ResultSet seleccionarMunicipioPorId(int id_municipio) throws SQLException {
+    
+    public static ResultSet seleccionarMunicipioPorId(int id_municipio) throws SQLException {
         String sql = "SELECT * FROM municipio WHERE id_municipio=?;";
         ResultSet resultado = null;
         if (conexion != null) {
