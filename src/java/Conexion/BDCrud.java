@@ -100,6 +100,24 @@ public class BDCrud {
 
         return false;
     }
+    
+    public static boolean insertarDisciplinaDeMunicipio(Disciplina disciplina, int id_municipio)
+                    throws SQLException {
+        String sqlRelacion = "INSERT INTO disciplina_municipio VALUES (?, ?);";
+
+        if (conexion != null) {
+            // primero insertamos la disciplina
+            if(insertarDisciplina(disciplina)){// si se inserta exitosamente
+                sentenciaPreparada = conexion.prepareStatement(sqlRelacion);
+                sentenciaPreparada.setInt(1, disciplina.getId());
+                sentenciaPreparada.setInt(2, id_municipio);
+                
+                return sentenciaPreparada.executeUpdate() == 1;
+            }
+        }
+
+        return false;
+    }
 
     public static boolean insertarEncuentro(Encuentro encuentro) throws SQLException {
         String sql = "INSERT INTO encuentro VALUES (?, ?, ?, ?);";

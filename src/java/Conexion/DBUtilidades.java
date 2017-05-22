@@ -118,6 +118,19 @@ public class DBUtilidades {
         return resultado;
     }
     
+    public static ResultSet disciplinasPorNombreYMunicipio(String nombre, int id_municipio) throws SQLException {
+        String sql = "SELECT * FROM disciplina, disciplina_municipio "
+                + "WHERE id_disciplina=id_disciplina_municipio AND nombre_disciplina LIKE '%"+nombre+"%';";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
     // Retorna toda la informacion de los clubes del municipio y deporte pasados por parametros
     public static ResultSet clubesDeUnMunicipio(int id_municipio) throws SQLException {
         String sql = "SELECT * FROM clubes WHERE id_municipio_club=?;";
