@@ -1,6 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="Modelos.Usuario"%>
 <%@page import="Controladores.UsuarioController"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
@@ -15,6 +17,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:set var="req" value="${pageContext.request}" />
+        <base href="${fn:replace(req.requestURL, req.requestURI, req.contextPath)}/" />
         <link rel="stylesheet" href="font/flaticon.css">
         <!-- Vinculamos con el estilo -->
         <link rel="stylesheet" href="css/estilo.css">

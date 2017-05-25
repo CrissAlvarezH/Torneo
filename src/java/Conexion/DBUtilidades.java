@@ -108,7 +108,7 @@ public class DBUtilidades {
     }
     
     public static ResultSet municipioPorNombre(String nombre) throws SQLException {
-        String sql = "SELECT * FROM municipio WHERE nombre_municipio LIKE '%"+nombre+"%';";
+        String sql = "SELECT * FROM municipio WHERE UPPER(nombre_municipio) LIKE UPPER('%"+nombre+"%');";
         ResultSet resultado = null;
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);

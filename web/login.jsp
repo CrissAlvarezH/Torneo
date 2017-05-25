@@ -1,6 +1,8 @@
 <%@page import="Controladores.UsuarioController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Conexion.DBUtilidades"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
     String error = "";
     //SI YA ESTÁ AUTENTICADO LO LLEVAMOS A LA PÁGINA PRINCIPAL
@@ -24,6 +26,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ingreso</title>
+        <c:set var="req" value="${pageContext.request}" />
+        <base href="${fn:replace(req.requestURL, req.requestURI, req.contextPath)}/" />
         <link rel="stylesheet" href="css/estilo_ingreso.css">
     </head>
     <body>

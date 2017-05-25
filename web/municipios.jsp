@@ -3,6 +3,8 @@
 <%@page import="java.util.List"%>
 <%@page import="Modelos.Usuario"%>
 <%@page import="Controladores.UsuarioController"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
     if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
         response.sendRedirect("ingresar");
@@ -20,7 +22,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimun-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
+        <c:set var="req" value="${pageContext.request}" />
+        <base href="${fn:replace(req.requestURL, req.requestURI, req.contextPath)}/" />
         <link rel="stylesheet" href="font/flaticon.css">
         <!-- Vinculamos con el estilo -->
         <link rel="stylesheet" href="css/estilo.css">
@@ -32,7 +35,6 @@
 <body>
     
 <jsp:include page="header.jsp"/>
-<script type="text/javascript" src="js/clickItem.js"></script>
 
 <div class="contenedor-principal">
 
@@ -91,6 +93,11 @@
 
 </div>
 
+<script type="text/javascript">
+    function clickEnMunicipio(id_municipio){
+    window.location="disciplinas/"+id_municipio;
+}
+</script>
 
 </body>
 </html>

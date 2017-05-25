@@ -1,4 +1,6 @@
 <%@page import="Controladores.UsuarioController"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String error = "";
@@ -22,6 +24,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Registro</title>
+        <c:set var="req" value="${pageContext.request}" />
+        <base href="${fn:replace(req.requestURL, req.requestURI, req.contextPath)}/" />
         <link rel="stylesheet" href="css/estilo_ingreso.css">
     </head>
     <body>

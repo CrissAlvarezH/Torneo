@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
@@ -10,6 +12,8 @@
         <title>Mis clubs</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimun-scale=1">
+        <c:set var="req" value="${pageContext.request}" />
+        <base href="${fn:replace(req.requestURL, req.requestURI, req.contextPath)}/" />
         <!-- Llamamos a los iconos -->
         <link rel="stylesheet" href="font/flaticon.css">
         <!-- Vinculamos con el estilo -->

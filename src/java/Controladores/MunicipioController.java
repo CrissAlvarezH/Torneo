@@ -34,6 +34,7 @@ public class MunicipioController {
     
     public static List<Municipio> buscarMunicipioPorNombre(HttpServletRequest request){
         if(request.getParameter("nombre_buscar") != null){
+            System.out.println(request.getParameter("nombre_buscar"));
             return obtenerMunicipios(request.getParameter("nombre_buscar"));
         }else{
             return obtenerMunicipios();
@@ -75,6 +76,8 @@ public class MunicipioController {
                     int id = result.getInt(1);
                     String nombre = result.getString(2);
                     String departamento = result.getString(3);
+                    
+                    System.out.println("Municipio: " + nombre);
                     
                     municipios.add(new Municipio(id, nombre, departamento));
                 }
