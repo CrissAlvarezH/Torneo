@@ -1,0 +1,39 @@
+.item-group {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.item {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #F8B711;
+}
+
+.item-container {
+    padding-top: 2px;
+    display: inline-block;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.text-item {
+  margin: 5px 0;
+}
+
+.id-participante {
+  font-size: 14px;
+}
+
+.item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.item-textos {
+    display: inline-block;
+    margin-left: 30px;
+    vertical-align: middle;
+    width: 87%;
+}

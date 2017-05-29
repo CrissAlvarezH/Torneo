@@ -19,8 +19,8 @@ public class Conector {
         if(conexion == null){
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection(
-                    "jdbc:postgresql://172.17.0.2:5432/torneos",// base de datos
-                    "postgres", "eva123");// usuario, contraseña
+                    "jdbc:postgresql://localhost:5432/torneos",// base de datos
+                    "cristian", "cris");// usuario, contraseña
         }
     }
     
