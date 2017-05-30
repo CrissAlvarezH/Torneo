@@ -45,66 +45,6 @@
                             </div>
                        </div>
 
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
-                        <div class="item-group">
-                            <div class="item">
-                                    <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
-                                    </div>
-                            </div>
-                        </div>
-
                       </div>
                 </div>
             </div>

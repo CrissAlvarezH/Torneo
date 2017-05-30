@@ -6,13 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="css/descripcion-club/estilo_descripcion_club.css">
 	<link rel="stylesheet" href="css/descripcion-club/estilo-items-clubs.css">
+        
+        <link rel="stylesheet" href="css/estilo.css">
 	<title>Club</title>
 </head>
 <body>
+    
+<jsp:include page="header.jsp"/>
 
 <div class="contenedor-superior">
 	<div class="contenedor-izq">
-		<h1>Nombre del club</h1>
+		<h2 class="nombre">Nombre del club</h2>
 
 		<div class="texto-club">
 			<h4>Direccion del clun</h4>

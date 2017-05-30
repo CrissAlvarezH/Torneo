@@ -2,14 +2,14 @@
 <!DOCTYPE html>    
 <header>
 <div class="contenedor">
-    <h1 class="flaticon-running"> Club</h1>
+    <h1 class="titulo-header flaticon-running"> Club</h1>
     <input type="checkbox" id="menu-bar">
     <label class="flaticon-menu-button-of-three-horizontal-lines" for="menu-bar"></label>
     <!-- Opciones del menu -->
     <nav class="menu">
-        <a href="inicio">Inicio</a>
+        <a href="inscribir_participante.jsp">Inicio</a>
         <a href="municipios">Municipios</a>
-        <a href="">Torneos</a>
+        <a href="descripcion_club.jsp">Torneos</a>
         <a href="salir">Salir</a>
     </nav>
 </div>   

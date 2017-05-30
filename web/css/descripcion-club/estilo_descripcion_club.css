@@ -6,6 +6,7 @@ body {
 }
 
 .contenedor-superior {
+        margin-top: 40px;
 	display: flex;
 	background: #801515;
 	padding: 30px;
@@ -32,13 +33,14 @@ body {
 	margin: auto;
 }
 
-h1 {
+h2[class="nombre"]  {
+        margin-bottom: 20px;
 	color: #e4dddd;
 	text-align: center;
 }
 
-h4 {
-	display: inline-block;
+h4{
+        margin-bottom: 5px;
 	padding: 0 5px;
 	text-align: center;
 }

@@ -10,7 +10,6 @@ body{
     background: rgba(0,0,0,0.8);
     
     position: absolute;
-    top: 0;
     left: 0;
     
     display: flex;
@@ -39,6 +38,7 @@ body{
     line-height: 10px;
     border-radius: 50px;
     right: 50px;
+    margin-top: 40px;
     cursor: pointer;
 }
 

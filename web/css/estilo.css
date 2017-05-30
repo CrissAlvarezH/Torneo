@@ -32,7 +32,7 @@ header {
     margin: auto;
 }
 
-h1 {
+h1[class="titulo-header flaticon-running"]{
     float: left;
 }
 
