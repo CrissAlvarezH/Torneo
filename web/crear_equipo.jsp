@@ -9,8 +9,9 @@
     </head>
 
     <body>
-        <input type="checkbox" id="cerrar">
-        <label for="cerrar" id="btn-cerrar">Cerrar</label>
+        
+        <jsp:include page="header.jsp"/>
+        
         <div class="modal">
             <div class="contenedor">
                 <div class="contenedor-izquierda">

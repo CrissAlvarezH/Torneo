@@ -27,12 +27,12 @@ header {
     z-index: 100;
 }
 
-.contenedor {
+.contenedor-header {
     width: 98%;
     margin: auto;
 }
 
-h1[class="titulo-header flaticon-running"]{
+.titulo-header {
     float: left;
 }
 

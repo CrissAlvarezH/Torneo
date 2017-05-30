@@ -5,13 +5,12 @@
        <meta name="viewport" content="width=device-width, user-scalable=no,  initial=scale=1, maxinum-scale=1, maxinum-scale=1">
        <link rel="stylesheet" href="css/inscribir-participante/estilo_ventana_participante.css">
        <link rel="stylesheet"href="css/inscribir-participante/estio_formulario_participante.css">
-        
+       <link rel="stylesheet"href="css/estilo.css">
     </head>
     
     <body>  
-        <!-- Modal para inscribir un participante-->
-        <input type="checkbox" id="cerrar">
-        <label for="cerrar" id="btn-cerrar">Cerrar</label>
+        <jsp:include page="header.jsp"/>
+        
         <div class="modal">
             <div class="contenido">
                 <form action="participacion.jsp" method="post" class="form-registro">
@@ -35,9 +34,5 @@
              </div>
          </div>
         
-        <main>
-            <jsp:include page="descripcion_club.jsp"/>
-        </main>
-
     </body>
 </html>

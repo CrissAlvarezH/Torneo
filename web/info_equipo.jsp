@@ -6,11 +6,13 @@
         <link rel="stylesheet" href="css/info-equipo/estilo-modal-equipo.css">
         <link rel="stylesheet" href="css/info-equipo/estilo-formulario-equipo.css">
         <link rel="stylesheet" href="css/info-equipo/estilo-item-equipo.css">
+        
+    
     </head>
 
     <body>
-        <input type="checkbox" id="cerrar">
-        <label for="cerrar" id="btn-cerrar">Cerrar</label>
+        <jsp:include page="header.jsp"/>
+        
         <div class="modal">
             <div class="contenedor">
                 <div class="contenedor-izquierda">

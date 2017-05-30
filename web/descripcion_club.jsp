@@ -6,8 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="css/descripcion-club/estilo_descripcion_club.css">
 	<link rel="stylesheet" href="css/descripcion-club/estilo-items-clubs.css">
-        
-        <link rel="stylesheet" href="css/estilo.css">
+ 
 	<title>Club</title>
 </head>
 <body>
