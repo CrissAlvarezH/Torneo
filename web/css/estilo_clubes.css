@@ -10,9 +10,9 @@ body {
 
 
 .contenedor-izquierda {
-	height: 700px;/* una altura fija para que no haga scroll y este se pase al div hijo*/
+	height: 630px;/* una altura fija para que no haga scroll y este se pase al div hijo*/
 	overflow-y: scroll;/* activamos el scroll en y */
-	width: 60%;
+	width: 70%;
 	padding: 0 20px;
 	/*background: #e45757;*/
 }
@@ -70,7 +70,7 @@ select {
 }
 
 .contenedor-derecha {
-	width: 40%;
+	width: 30%;
 	padding: 5px 20px;
 	/*background: #c4e457;*/
 }
@@ -124,5 +124,6 @@ label {
 	width: 100%;
 }
 
-.btn-insertar {
+.btn-insertar:active {
+    transform: scale(0.95);
 }

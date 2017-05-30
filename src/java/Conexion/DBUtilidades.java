@@ -83,6 +83,7 @@ public class DBUtilidades {
         return sentenciaPreparada.executeUpdate() == 1;
     }
     
+    
     public static ResultSet todosLosClubes() throws SQLException {
         String sql = "SELECT * FROM clubes;";
         ResultSet resultado = null;
@@ -230,6 +231,47 @@ public class DBUtilidades {
 
         return resultado;
     }
+    
+    public static ResultSet participantesDeUnClub(int id_club)
+            throws SQLException {
+
+        String sql = "SELECT * FROM participante, participante_club "
+                + "WHERE id_participante=id_participante_club "
+                + "AND id_club_participante=?;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_club);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
+    
+    public static ResultSet participantesDeUnClubFueraEquipo(int id_club, int id_equipo)
+            throws SQLException {
+        String cad = "SELECT id_participante, nombres_participante, apellidos_participante "+
+        "FROM (SELECT * FROM participante_equipo WHERE id_participante_equipo<>4) AS R, participante, participante_club"+
+        "WHERE id_participante=id_participante_equipo AND id_participante=id_participante_club AND id_club_participante=?;";
+
+        String sql = "SELECT id_participante, nombres_participante, apellidos_participante "
+                + "FROM participante, participante_club "
+                + "WHERE id_participante=id_participante_club AND id_club_participante=?"
+                + "AND id_participante NOT IN (SELECT id_participante_equipo "
+                + "FROM participante_equipo WHERE id_equipo_participante=?);";
+        
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+            sentenciaPreparada.setInt(1, id_club);
+            sentenciaPreparada.setInt(2, id_equipo);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
 
     // Retorna los participantes que estan en un equipo
     public static ResultSet participantesDeUnEquipo(int id_equipo) throws SQLException {
@@ -265,7 +307,7 @@ public class DBUtilidades {
 
     // Retorna los equipos de un club
     public static ResultSet equiposDeUnClub(int id_club) throws SQLException {
-        String sql = "SELECT * FROM equipos, equipo_club "
+        String sql = "SELECT * FROM equipo, equipo_club "
                 + "WHERE id_equipo=id_equipo_club "
                 + "AND id_club_equipo=?;";
         ResultSet resultado = null;

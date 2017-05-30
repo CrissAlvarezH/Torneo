@@ -57,7 +57,7 @@
             %>
               
                 <div class="item-group">
-                    <div class="item" onclick="">
+                    <div class="item" onclick="clickEnClub(<%= club.getId() %>)">
                         <div class="item-container">
                             <img src="img/img_clubes.png"
                                 class="item-img">
@@ -74,6 +74,12 @@
             %>
         </div>
     </div>
+        
+    <script type="text/javascript">
+        function clickEnClub(id_club){
+            window.location="descripcion_club.jsp?id="+id_club;
+        }
+    </script>
 
     <div class="contenedor-derecha">
         

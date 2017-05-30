@@ -52,6 +52,26 @@ public class ClubController {
         return resultOK;
     }
     
+    public static Club obtenerClub(int id){
+        Club club = new Club();
+        ResultSet result;
+        
+        try{
+            result = BDCrud.seleccionarClubPorId(id);
+            
+            if(result.next()){
+                club.setId(result.getInt(1));
+                club.setNombre(result.getString(2));
+                club.setDireccion(result.getString(3));
+            }
+        }catch(SQLException e){
+            System.out.println(e.getClass()+": "+e.getMessage());
+            System.out.println("Error en obtener club -> "+e.getMessage());
+        }
+        
+        return club;
+    }
+    
     public static List<Club> obtenerClubes(){
         List<Club> clubes = new ArrayList();
         

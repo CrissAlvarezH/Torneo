@@ -14,6 +14,10 @@ public class Club {
         this.direccion = direccion;
         this.id_municipio = id_municipio;
     }
+    
+    public Club(){
+        this(0, "", "", 0);
+    }
 
     public int getId_municipio() {
         return id_municipio;

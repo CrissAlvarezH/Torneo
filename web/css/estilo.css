@@ -36,7 +36,7 @@ header {
     float: left;
 }
 
-header .contenedor {
+header .contenedor-header {
     display: table;
 }
 
@@ -49,7 +49,7 @@ section {
     text-align: center;
 }
 
-footer .contenedor{
+footer .contenedor-header{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -76,7 +76,7 @@ footer .contenedor{
         width: auto;
     }
     
-    footer .contenedor {
+    footer .contenedor-header {
         justify-content: space-between;
     }
 }

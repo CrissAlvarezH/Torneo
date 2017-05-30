@@ -17,9 +17,10 @@ h1{
 .form-registro{
     width: 95%;
     max-width: 500px;
-    margin: auto;
+    margin: 70px auto;
     background: #E9E8E6;
     border-radius: 7px;
+    
 }
 
 .form__titulo{

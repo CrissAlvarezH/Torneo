@@ -21,11 +21,6 @@
 
 .text-item {
   margin: 5px 0;
-  text-align: left;
-}
-
-.id-participante {
-  font-size: 14px;
 }
 
 .item:hover {

@@ -6,9 +6,14 @@ package Conexion;
 
 import Modelos.*;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import javafx.scene.input.DataFormat;
+import org.postgresql.jdbc2.optional.SimpleDataSource;
 
 /**
  *
@@ -152,14 +157,13 @@ public class BDCrud {
         return false;
     }
 
-    public static boolean insertarEquipo(Equipo equipo) throws SQLException {
-        String sql = "INSERT INTO equipo VALUES (?, ?, ?);";
+    public static boolean insertarEquipo(Equipo equipo) throws SQLException, ParseException {
+        String sql = "INSERT INTO equipo VALUES (?, ?, '"+equipo.getFecha_fundacion()+"');";
 
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, equipo.getId());
             sentenciaPreparada.setString(2, equipo.getNombre());
-            sentenciaPreparada.setString(3, equipo.getFecha_fundacion());
 
             return sentenciaPreparada.executeUpdate() == 1;
         }
@@ -240,17 +244,15 @@ public class BDCrud {
     }
 
     public static boolean insertarTorneo(Torneo torneo) throws SQLException {
-        String sql = "INSERT INTO torneo VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO torneo VALUES (?, ?, '"+torneo.getFecha_inicio()+"', '"+torneo.getFecha_fin()+"', ?, ?, ?);";
 
         if (conexion != null) {
             sentenciaPreparada = conexion.prepareStatement(sql);
             sentenciaPreparada.setInt(1, torneo.getId());
             sentenciaPreparada.setString(2, torneo.getNombre());
-            sentenciaPreparada.setString(3, torneo.getFecha_inicio());
-            sentenciaPreparada.setString(4, torneo.getFecha_fin());
-            sentenciaPreparada.setString(5, torneo.getDescripcion());
-            sentenciaPreparada.setInt(6, torneo.getId_disciplina());
-            sentenciaPreparada.setInt(7, torneo.getId_categoria());
+            sentenciaPreparada.setString(3, torneo.getDescripcion());
+            sentenciaPreparada.setInt(4, torneo.getId_disciplina());
+            sentenciaPreparada.setInt(5, torneo.getId_categoria());
 
             return sentenciaPreparada.executeUpdate() == 1;
         }
@@ -1142,6 +1144,18 @@ public class BDCrud {
 
         return resultado;
     }
+    
+    public static ResultSet todosLosTorneos() throws SQLException {
+        String sql = "SELECT * FROM torneo;";
+        ResultSet resultado = null;
+        if (conexion != null) {
+            sentenciaPreparada = conexion.prepareStatement(sql);
+
+            resultado = sentenciaPreparada.executeQuery();
+        }
+
+        return resultado;
+    }
 
     public ResultSet seleccionarUsuarioPorId(int id_usuario) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE id_usuario=?;";
@@ -1157,7 +1171,7 @@ public class BDCrud {
         return resultado;
     }
 
-    public ResultSet seleccionarClubPorId(int id_club) throws SQLException {
+    public static ResultSet seleccionarClubPorId(int id_club) throws SQLException {
         String sql = "SELECT * FROM club WHERE id_club=?;";
         ResultSet resultado = null;
         if (conexion != null) {
@@ -1213,7 +1227,7 @@ public class BDCrud {
         return resultado;
     }
 
-    public ResultSet seleccionarEquipoPorId(int id_equipo) throws SQLException {
+    public static ResultSet seleccionarEquipoPorId(int id_equipo) throws SQLException {
         String sql = "SELECT * FROM equipo WHERE id_equipo=?;";
         ResultSet resultado = null;
         if (conexion != null) {

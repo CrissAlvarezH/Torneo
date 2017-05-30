@@ -2,6 +2,7 @@
 <!DOCTYPE html>  
 <head>
     <link rel="stylesheet" href="css/estilo.css">  
+    <link rel="stylesheet" href="font/flaticon.css">
 </head>
 <header>
 <div class="contenedor-header">
@@ -10,9 +11,9 @@
     <label class="flaticon-menu-button-of-three-horizontal-lines" for="menu-bar"></label>
     <!-- Opciones del menu -->
     <nav class="menu">
-        <a href="info_equipo.jsp">Inicio</a>
+        <a href="index.jsp">Inicio</a>
         <a href="municipios">Municipios</a>
-        <a href="crear_equipo.jsp">Torneos</a>
+        <a href="torneos.jsp">Torneos</a>
         <a href="salir">Salir</a>
     </nav>
 </div>   

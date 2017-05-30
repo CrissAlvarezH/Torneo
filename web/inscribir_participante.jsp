@@ -1,3 +1,26 @@
+
+<%@page import="Controladores.ParticipanteController"%>
+<%
+    if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
+        response.sendRedirect("ingresar");
+    }
+    
+    int id_club = Integer.parseInt(request.getParameter("id"));
+    boolean inscripcionExitosa = false;
+    String mensageError = "";
+    // verificamos que llenó el formulario
+    if(request.getParameter("peso") != null){
+        inscripcionExitosa = ParticipanteController
+                .inscribirEnClub(request, id_club, Integer.parseInt(request.getParameter("id_participante")));
+        
+        if(inscripcionExitosa){
+            response.sendRedirect("descripcion_club.jsp?id="+id_club);
+        }else{
+            mensageError = "No se pudo realizar la inscripcion";
+        }
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -13,11 +36,12 @@
         
         <div class="modal">
             <div class="contenido">
-                <form action="participacion.jsp" method="post" class="form-registro">
+                <form action="" method="post" class="form-registro">
                     <h2 class="form__titulo"><font face="arial">INSCRIBE UN PARTICIPANTE</font></h2>
                     <div class="contenedor-inputs">
+                        <p> <%= mensageError %> </p>
                         <input type="text" name="id_participante" placeholder="ID del participante" class="input-100" required>
-                        <input type="text" name="nombre_participante" placeholder="Nombres del participante" class="input-48" required>
+                        <input type="text" name="nombres" placeholder="Nombres del participante" class="input-48" required>
                         <input type="text" name="apellidos" placeholder="Apellidos del participante" class="input-48" required>
                         <input type="number" name="edad" placeholder="edad" class="input-48" required>
                         <select name="sexo" class="seleccion-48" required>

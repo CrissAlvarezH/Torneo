@@ -1,3 +1,34 @@
+
+<%@page import="Controladores.EquipoController"%>
+<%@page import="Controladores.ParticipanteController"%>
+<%@page import="Modelos.Participante"%>
+<%@page import="java.util.List"%>
+<%
+    if ((session.getAttribute("idusuario") == null) || (session.getAttribute("idusuario") == "")) {
+        response.sendRedirect("ingresar");
+    }
+    
+    String idParticipantes = "", error= "";
+    boolean formacionExitosa= false;
+    int id_club = Integer.parseInt(request.getParameter("id"));
+    
+    if(request.getParameter("id_equipo") != null){
+        formacionExitosa = EquipoController.formarEquipo(request,
+                idParticipantes, Integer.parseInt(request.getParameter("id_equipo")), id_club);
+        
+        if(formacionExitosa){
+            response.sendRedirect("descripcion_club.jsp?id="+id_club);
+        }else{
+            error = "Error, no se guardo el equipo, intente con otro id";
+        }
+    }
+    
+    
+
+    List<Participante> participantes = ParticipanteController.obtenerParticipantesDeUnClub(id_club);
+    
+%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -16,39 +47,57 @@
             <div class="contenedor">
                 <div class="contenedor-izquierda">
                     <div class="contenedor-inputs">
-                        <input type="text" name="id_equipo" placeholder="ID del equipo" class="input-100" required>
-                        <input type="text" name="nombre_equipo" placeholder="Nombre del equipo" class="input-100" required>
-                        <input placeholder="Fecha actual" class="input-100" type="text" onfocus="(this.type='date')"  id="date" required>
-                        <select name="disciplina" class="seleccion-100" required>
-                            <option value="0_disciplina" disabled selected hidden>Escoja una disciplina</option>
-                            <option value="1_disciplina">Disciplina 1</option>
-                            <option value="2_disciplina">Disciplina 2</option>
-                            <option value="3_disciplina">Disciplina 3</option>
-                            <option value="4_disciplina">Disciplina 4</option>
-                        </select>
-                        <input type="submit" Value="Crear equipo" class="btn-enviar" required>
+                        <p><%= error %></p>
+                        <form method="post">
+                            <input type="text" name="id_equipo" placeholder="ID del equipo" class="input-100" required>
+                            <input type="text" name="nombre_equipo" placeholder="Nombre del equipo" class="input-100" required>
+                            <input placeholder="Fecha actual" name="fecha" class="input-100" type="text" onfocus="(this.type='date')"  id="date" required>
+                            <select name="disciplina" class="seleccion-100" required>
+                                <option value="0_disciplina" disabled selected hidden>Escoja una disciplina</option>
+                                <option value="1_disciplina">Ciclismo</option>
+                                <option value="2_disciplina">Futbol</option>
+                                <option value="3_disciplina">Esqui</option>
+                                <option value="4_disciplina">Baloncesto</option>
+                            </select>
+                            <input type="submit" Value="Crear equipo" class="btn-enviar" required>
+                        </form>
                     </div>
                 </div>
+                <!-- 
                 <hr class="linea-vertical">
                 <div class="contenedor-derecha">
-
+                    
+                
                     <div class="texto-centrado">
                       <h3 class="texto-sin-margin">Seleccione los participantes</h3>
                     </div>
+                    
                     <div class="contenedor-lista">
-                        <div class="item-group">
-                            <div class="item">
-                                <div class="item-textos">
-                                        <h4 class="text-item">Item numero 1</h4>
-                                        <input type="checkbox" name="item1" value="Si" class="check">
-                                        <p class="text-item id-participante">Descripcion</p>
+                        <%
+                            for(Participante participante : participantes){
+                        %>
+                        
+                            <div class="item-group">
+                                <div class="item">
+                                    <div class="item-textos">
+                                            <h3 class="text-item"><%= participante.getNombres()+" "+participante.getApellidos() %></h3>
+                                            <input type="checkbox" onClick="if(this.checked){<% idParticipantes += (participante.getId()+","); %> alert(<%= idParticipantes %>);}" name="item1" value="Si" class="check">
+                                            <p class="text-item id-participante">Edad: <%= participante.getEdad() %></p>
+                                    </div>
                                 </div>
-                            </div>
-                       </div>
-
-                      </div>
+                           </div>
+                            
+                        <%
+                            }// fin de foreach
+                        %>
+                    </div>
+                    
+                    
+                    -->
                 </div>
             </div>
         </div>
+                    
+ 
     </body>
 </html>
